@@ -44,6 +44,7 @@ var app = app || {};
 
         $('#thing-list-page ul').on('click', '.update', (event) => {
             const id = $(event.target).parent().data('id')
+            alert(' thing-list-page ul')
             page('/edit/' + id)
         })
 

@@ -8,10 +8,11 @@ page('/*', (ctx, next) => {
     next()
 })
 
-page('/', app.thingListPage.init)
-page('/admin', app.adminPage.init)
-page('/create', app.createPage.init)
-page('/edit/:id', (ctx) => app.Thing.fetchOne(ctx.params.id).then(app.editPage.init))
-
-page('/book-detail-page/:id', app.bookDetailPage.init)
+page('/', app.bookListPage.init)
+page('/book-detail-page/:id', (ctx) =>{
+    app.Book.fetchOne(ctx.params.id).then( (book)=>{
+        console.log('book',book);
+        app.bookDetailPage.init(book[0]);
+    })
+})
 page.start()

@@ -26,7 +26,17 @@
     </nav>
 
     <!-- pages -->
-    <section id="thing-list-page" class="page">
+    <section id="book-list-page" class="page" style="background:gray;">
+        <h1>books</h1>
+        <div id="book-list-slot"></div>
+    </section>
+    <section id="book-detail-page" class="page" style="background:green;">
+        <h1>detail page</h1>
+        <div id="book-detail-slot"></div>
+    </section>
+
+    <!-- pages -->
+    <section id="thing-list-page" class="page" style="background:orange;">
         <h1>Thing List</h1>
         <ul id="thing-list"></ul>
     </section>
@@ -59,12 +69,13 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-    <script src="scripts/models/Thing.js"></script>
-    <script src="scripts/views/thing-list-page.js"></script>
-    <script src="scripts/views/admin-page.js"></script>
+    <script src="scripts/models/Book.js"></script>
+    <script src="scripts/views/book-list-page.js"></script>
+    <script src="scripts/views/book-detail-page.js"></script>
+    <!-- <script src="scripts/views/admin-page.js"></script>
     <script src="scripts/views/create-page.js"></script>
-    <script src="scripts/views/edit-page.js"></script>
-    <script src="scripts/controllers/routes-remote.js"></script>
+    <script src="scripts/views/edit-page.js"></script> -->
+    <script src="scripts/controllers/routes.js"></script>
 
 </body>
 
