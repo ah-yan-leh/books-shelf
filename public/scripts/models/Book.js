@@ -2,15 +2,22 @@ var app = app || {};
 
 (module => {
 
+    // const API_URL = {
+    //     getAll      :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books',
+    //     getOne      :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books',
+    //     updateOne   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/updateBook',
+    //     postOne     :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/addNewBook',
+    //     deteleOne   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/deleteBook',
+    //     deteleAll   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/deleteAllBooks'
+    // }
     const API_URL = {
-        getAll      :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books',
-        getOne      :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books',
-        updateOne   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/updateBook',
-        postOne     :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/addNewBook',
-        deteleOne   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/deleteBook',
-        deteleAll   :   'https://server-lab10-codefellows.herokuapp.com/api/v1/books/deleteAllBooks'
+        getAll      :   'http://localhost:8080/api/v1/books',
+        getOne      :   'http://localhost:8080/api/v1/books',
+        updateOne   :   'http://localhost:8080/api/v1/books/updateBook',
+        postOne     :   'http://localhost:8080/api/v1/books/addNewBook',
+        deteleOne   :   'http://localhost:8080/api/v1/books/deleteBook',
+        deteleAll   :   'http://localhost:8080/api/v1/books/deleteAllBooks'
     }
-
     const Book = {}
 
     Book.all = []
@@ -37,16 +44,17 @@ var app = app || {};
             .catch(err => console.error(err))
     }
 
-    Book.create = (thing) => {
-        return $.post(API_URL.postOne, thing)
+    Book.create = (book) => {
+        return $.post(API_URL.postOne,book)
             .catch(err => console.error(err))
     }
     Book.update = book => {
+        console.log('book.book_id',book.book_id)
         return $.ajax({
-            url: API_URL.updateOne+ '/' + book.book_id,
+            url: API_URL.updateOne+'/'+book.book_id,
             method: 'PUT',
-            data: book
-        }).catch(errorCallback)
+            data:book
+        }).catch(err => console.error(err))
     }
 
     Book.delete = (book_id) => {

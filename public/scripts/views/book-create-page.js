@@ -7,8 +7,8 @@ var app = app || {};
     <div>
         <form>
             <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" placeholder="Enter Title" name="title">
+            <label for="titles">Title:</label>
+            <input type="text" id="titles" placeholder="Enter Title" name="titles">
             </div>
             <div>
             <label for="author">Author:</label>
@@ -16,7 +16,7 @@ var app = app || {};
             </div>
             <div>
             <label for="isbn">ISBN:</label>
-            <input type="text" id="email" placeholder="Enter ISBN" name="isbn">
+            <input type="text" id="isbn" placeholder="Enter ISBN" name="isbn">
             </div>
             <div >
             <label for="image_url">Image URL:</label>
@@ -37,12 +37,22 @@ var app = app || {};
         $('#book-create-page').off()
         const template = Handlebars.compile(markup)
         $('#book-create-slot').append((template(book)))
-    }
+
+        
     $('#book-create-page').off().on('submit', 'form', (event) => {
         event.preventDefault()
-        var fields = $( ":input" ).serializeArray();
+        var fields = {
+            author:     $('#author').val(),
+            title:      $('#titles').val(),
+            image_url:  $('#image_url').val(),
+            description:$('#description').val(),
+            isbn:       $('#isbn').val()
+        }
+        console.log('fields',fields)
         app.Book.create(fields);
     })
+
+    }
 
     module.bookCreatePage = bookCreatePage
 })(app)

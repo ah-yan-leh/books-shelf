@@ -5,9 +5,10 @@ var app = app || {};
 
     const markup = `
     <div>
-        <form>
+        <form id='foo-form'>
             <div>
             <label for="title">Title:</label>
+            <input type="hidden" id="book_id" name="book_id" value="{{book_id}}">
             <input type="text" id="title" placeholder="Enter Title" name="title" value="{{title}}">
             </div>
             <div>
@@ -37,12 +38,24 @@ var app = app || {};
         $('#book-edit-page').off()
         const template = Handlebars.compile(markup)
         $('#book-edit-slot').append((template(book)))
+
+        $('#foo-form').off().on('submit', event => {
+            event.preventDefault()
+            console.log('woohoo')
+            var fields = {
+                book_id:    $('#book_id').val(),
+                author:     $('#author').val(),
+                title:      $('#title').val(),
+                image_url:  $('#image_url').val(),
+                description:$('#descript').val(),
+                isbn:       $('#isbn').val()
+            }
+            
+            console.log('fields.book_id',fields.book_id)
+            app.Book.update(fields);
+        })
     }
-    $('#book-edit-page').off().on('submit', 'form', (event) => {
-        event.preventDefault()
-        var fields = $( ":input" ).serializeArray();
-        app.Book.update(fields);
-    })
+
 
     module.bookEditPage = bookEditPage
 })(app)

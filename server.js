@@ -12,7 +12,7 @@ app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/*', (request, response) => {
+app.get('/*', cors(),(request, response) => {
   response.sendFile('index.html', { root: './public' });
 })
 
