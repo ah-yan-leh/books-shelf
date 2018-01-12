@@ -1,13 +1,12 @@
 'use strict';
 
-const express = require('express');
-const pg = require('pg');
+const express = require('express')
 const bodyParser = require('body-parser');
 
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
-
+app.use(cors())
 app.use(express.static('./public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));

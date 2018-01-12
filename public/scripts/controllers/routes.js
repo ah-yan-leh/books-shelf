@@ -15,4 +15,16 @@ page('/book-detail-page/:id', (ctx) =>{
         app.bookDetailPage.init(book[0]);
     })
 })
+page('/book-edit-page/:id', (ctx) =>{
+    app.Book.fetchOne(ctx.params.id).then( (book)=>{
+        console.log('book',book);
+        app.bookEditPage.init(book[0]);
+    })
+})
+page('/create', (ctx) =>{
+    app.Book.fetchOne(ctx.params.id).then( (book)=>{
+        console.log('book',book);
+        app.book.init(book[0]);
+    })
+})
 page.start()

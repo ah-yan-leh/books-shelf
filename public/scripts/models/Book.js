@@ -41,13 +41,12 @@ var app = app || {};
         return $.post(API_URL.postOne, thing)
             .catch(err => console.error(err))
     }
-    Book.update = (thing) => {
+    Book.update = book => {
         return $.ajax({
-            url: API_URL.updateOne + '/' + thing.book_id,
+            url: API_URL.updateOne+ '/' + book.book_id,
             method: 'PUT',
-            data: thing
-        }).then(result => console.log(result))
-            .catch(err => console.error(err))
+            data: book
+        }).catch(errorCallback)
     }
 
     Book.delete = (book_id) => {

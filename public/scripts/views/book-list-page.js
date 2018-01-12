@@ -13,7 +13,8 @@ var app = app || {};
                         <h3>{{title}}</h3>
                         <h4>by {{author}}</h4>
                         
-                        <button class="update-book" data-book_id="{{book_id}}">Show</button>
+                        <button class="show-book" data-book_id="{{book_id}}">Show</button>
+                        <button class="update-book" data-book_id="{{book_id}}">Update</button>
                     </div>
                 </div>
                 <hr>
@@ -40,9 +41,13 @@ var app = app || {};
             }
         })
 
-        $('#book-list-page').on('click', '.update-book', (event) => {
+        $('#book-list-page').on('click', '.show-book', (event) => {
             const book_id = $(event.target).data('book_id')
             page('/book-detail-page/' + book_id)
+        })
+        $('#book-list-page').on('click', '.update-book', (event) => {
+            const book_id = $(event.target).data('book_id')
+            page('/book-edit-page/' + book_id)
         })
 
         app.Book.fetchAll().then(() => {
