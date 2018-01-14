@@ -52,6 +52,7 @@ var app = app || {};
         console.log('book.book_id',book.book_id)
         return $.ajax({
             url: API_URL.updateOne+'/'+book.book_id,
+            dataType: 'application/json',
             method: 'PUT',
             data:book
         }).catch(err => console.error(err))
